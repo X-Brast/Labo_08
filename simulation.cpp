@@ -6,6 +6,7 @@
 
 #include "simulation.h"
 #include "map.h"
+#include "aleatoire.h"
 
 void initialisationPosition( int& positionX , int& positionY , int& nbMouvement , int& status ){
    //Random position entre positionX <= maxX et et positionY <= maxY
@@ -16,28 +17,24 @@ void initialisationPosition( int& positionX , int& positionY , int& nbMouvement 
    status = Status::OK ;
 }
 void avancerCase( int& positionX , int& positionY ){
-   
+
+   enum Direction { NORD , SUD , OUEST , EST } ;
    //Random de la direction , Nord Sud Ouest Est
+   int direction = nombreAleatoire( 3 , 0 ) ;
    
-   //Pour tester
-   int direction = rand() % 3 ;
-   
-   //cout << "direction : " << direction << endl ;
    switch( direction ){
-      case 0 : positionY -- ; break ; //Nord
-      case 1 : positionY ++ ; break ; //Sud
-      case 2 : positionX -- ; break ;//Ouest
-      case 3 : positionX ++ ; break ;//Est
+      case Direction::NORD : positionY -- ; break ; //Nord
+      case Direction::SUD  : positionY ++ ; break ; //Sud
+      case Direction::OUEST : positionX -- ; break ;//Ouest
+      case Direction::EST : positionX ++ ; break ;//Est
    }
-   
 }
 
 //TODO : changer taille MAP
 void controleCase( int positionX , int positionY , int& status , int map[][LARGEUR_MAP] ){
    
    //Status de l'explorateur ( 1: OK , 2: Perdu , 3: riche , 4: Epuisé , 5:noyé  )
-   
-   //Si la position est en dehors de la map // TODO : changer la valeur 5 avec le maxX et maxY ( les dimensions de la cartes )
+   //Si la position est en dehors de la map
    if( positionX < 0 or positionY < 0 or positionX > LONGUEUR_MAP or positionY > LARGEUR_MAP ){
       status = Status::PERDU ;
    }
@@ -60,8 +57,8 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
    //Initialisation de la position
    initialisationPosition( positionX , positionY , nbMouvement , status ) ;
    
-   //Init du random , TODO : déplacer au bon endroit
-   srand(time(0)) ;
+   //Init du random
+   initialiserAleatoire() ;
    
    //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
    do{
