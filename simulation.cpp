@@ -13,7 +13,7 @@ void initialisationPosition( int& positionX , int& positionY , int& nbMouvement 
    positionX = 3 ;
    positionY = 3 ;
    nbMouvement = 0 ;
-   status = 0 ;
+   status = Status::OK ;
 }
 void avancerCase( int& positionX , int& positionY ){
    
@@ -39,18 +39,18 @@ void controleCase( int positionX , int positionY , int& status , int map[][LARGE
    
    //Si la position est en dehors de la map // TODO : changer la valeur 5 avec le maxX et maxY ( les dimensions de la cartes )
    if( positionX < 0 or positionY < 0 or positionX > LONGUEUR_MAP or positionY > LARGEUR_MAP ){
-      status = 2 ;
+      status = Status::PERDU ;
    }
   
    switch( map[positionX][positionY]){
-      //Si l'explorateur est tombé dans un lac // TODO : check le code LAC
+      //Si l'explorateur est tombé dans un lac
       case 2 :
-         status = 5 ;
+         status = Status::NOYE ;
          break ;
       
       //Si l'explorateur est tombé sur le trésor
       case 3 :
-         status = 3 ;
+         status = Status::RICHE ;
          break ;
    } 
 }
@@ -60,7 +60,6 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
    //Initialisation de la position
    initialisationPosition( positionX , positionY , nbMouvement , status ) ;
    
- 
    //Init du random , TODO : déplacer au bon endroit
    srand(time(0)) ;
    
@@ -68,7 +67,7 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
    do{
       //Controle si l'explorateur est epuisé
       if( nbMouvement >=  LARGEUR_MAP * LONGUEUR_MAP ){
-         status = 4 ;
+         status = Status::EPUISE ;
          break ;
       }
 
@@ -80,7 +79,7 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
       //On controle si l'explorateur n'est pas mort , noyé , riche ou épuisé
       controleCase( positionX , positionY , status, map ) ;
       //Si l'explorateur n'est pas OK , on arrête la simulation
-      if( status != 0 ){
+      if( status != Status::OK ){
          break ;
       }
    }while( true ) ;
