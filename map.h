@@ -8,7 +8,7 @@ using namespace std;
 
 enum class ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC};
 
-const int LONGEUR_MAP = 10;
+const int LONGUEUR_MAP = 10;
 const int LARGEUR_MAP = 10;
 
 void creationCarte(int tab[][LARGEUR_MAP], int nbObjet = 1);

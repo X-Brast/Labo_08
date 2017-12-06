@@ -5,6 +5,7 @@
  */
 
 #include "simulation.h"
+#include "map.h"
 
 void initialisationPosition( int& positionX , int& positionY , int& nbMouvement , int& status ){
    //Random position entre positionX <= maxX et et positionY <= maxY
@@ -32,12 +33,12 @@ void avancerCase( int& positionX , int& positionY ){
 }
 
 //TODO : changer taille MAP
-void controleCase( int positionX , int positionY , int& status , int map[axeX][axeY] ){
+void controleCase( int positionX , int positionY , int& status , int map[][LARGEUR_MAP] ){
    
    //Status de l'explorateur ( 1: OK , 2: Perdu , 3: riche , 4: Epuisé , 5:noyé  )
    
    //Si la position est en dehors de la map // TODO : changer la valeur 5 avec le maxX et maxY ( les dimensions de la cartes )
-   if( positionX < 0 or positionY < 0 or positionX > axeX or positionY > axeY ){
+   if( positionX < 0 or positionY < 0 or positionX > LONGUEUR_MAP or positionY > LARGEUR_MAP ){
       status = 2 ;
    }
   
@@ -54,7 +55,7 @@ void controleCase( int positionX , int positionY , int& status , int map[axeX][a
    } 
 }
 
-void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMouvement , int map[axeX][axeY] ){
+void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMouvement , int map[][LARGEUR_MAP] ){
    
    //Initialisation de la position
    initialisationPosition( positionX , positionY , nbMouvement , status ) ;
@@ -66,7 +67,7 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
    //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
    do{
       //Controle si l'explorateur est epuisé
-      if( nbMouvement >=  axeX * axeY ){
+      if( nbMouvement >=  LARGEUR_MAP * LONGUEUR_MAP ){
          status = 4 ;
          break ;
       }
