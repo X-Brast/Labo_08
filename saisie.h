@@ -34,6 +34,15 @@
     * @return true si l'utilisateur entre "O" , false si l'utilisateur entre "N"
     */
    bool recommencerProgramme();
+   
+   /**
+   * recupère un entier saisi par l'utilisateur dans un intervalle donné
+   * @param valeurMin   la valeur minimum autorisée
+   * @param valeurMax   la valeur maximum autorisée
+   * @param message     le message affiché à l'utilisateur
+   * @return            la valeur saisie
+   */
+   int saisir(const int& valeurMin, const int& valeurMax, const std::string& message); 
 
 #endif /* SAISIE_H */
 

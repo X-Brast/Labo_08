@@ -12,13 +12,15 @@
  */
 
 #include <cstdlib>
+#include <stdlib.h>
 #include "simulation.h"
 #include "saisie.h"
 #include "map.h"
 
-using namespace std;
+//using namespace std;
 
-int main() {
+int main() 
+{
    
    
    //TODO : Faire en sorte que la taille de la map sois accessible depuis simulation.cpp
@@ -36,18 +38,17 @@ int main() {
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
   
    
-   do{
+   do
+   {
+      ReinitialiserCarte(map);
       
-      lancerSimulation( positionX , positionY , status , nbMouvement , map  ) ;
-   
-      cout << "----------------------" << endl ;
-      cout << ":::::::stats ::::::: " << endl << endl
-           << "positionX : " << positionX << endl 
-           << "positionY : " << positionY << endl 
-           << "Status : " << status << endl
-           << "Nb mouvement: " << nbMouvement << endl << endl ;
+      creationCarte(map, 3);
+      
+      afficherMap(map);
+      
       
    }while(recommencerProgramme());
-   return 0;
+   
+   return EXIT_SUCCESS;
 }
 

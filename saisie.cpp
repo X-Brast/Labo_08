@@ -12,14 +12,10 @@
 
 #include "saisie.h"
 
-bool controleSaisie( int valeur , unsigned int limiteInf , unsigned limiteSup , string message){
-   
+bool controleSaisie( int valeur , unsigned int limiteInf , unsigned limiteSup)
+{
    //Controle d'une valeur entre deux bornes
-   if( valeur < limiteInf or valeur > limiteSup ){
-      cout << message << endl ;
-      return false ;
-   }
-   return true ;
+   return (valeur < limiteInf or valeur > limiteSup);
 }
 
 bool recommencerProgramme()
@@ -52,4 +48,33 @@ bool recommencerProgramme()
    }while (!saisieOK);
    
    return recommencerProgramme ;
+}
+
+int saisir(const int& valeurMin, const int& valeurMax, const std::string& message) 
+{
+   int valeurSaisie;
+   bool erreur;
+   
+   do 
+   {
+      erreur = false;
+      
+      cout << std::endl << message << "[" << valeurMin << ".." << valeurMax << "] : ";
+      cin >> valeurSaisie;
+      
+      // si l'utilisateur entre une valeur qui ne peut pas être comparée en int
+      // on gére l'erreur
+      if(cin.fail() || controleSaisie(valeurSaisie, valeurMin, valeurMax)) 
+      {
+         valeurSaisie = std::numeric_limits<int>::min(); // cas d'erreur 
+         cout << "Valeur incorrecte ! ";
+         cin.clear();
+         erreur = true;
+      }
+      
+      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+      
+   } while(erreur);
+   
+   return valeurSaisie;
 }

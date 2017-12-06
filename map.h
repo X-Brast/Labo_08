@@ -3,6 +3,7 @@
 
 #include "aleatoire.h"
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -10,6 +11,9 @@ enum class ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC};
 
 const int LONGUEUR_MAP = 10;
 const int LARGEUR_MAP = 10;
+
+void ReinitialiserCarte(int tab[][LARGEUR_MAP]);
+void afficherMap(int tab[][LARGEUR_MAP]);
 
 void creationCarte(int tab[][LARGEUR_MAP], int nbObjet = 1);
 void creationLac(int tab[][LARGEUR_MAP], int rayon = 1, int nbLac = 1);

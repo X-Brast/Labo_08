@@ -1,7 +1,29 @@
 
 #include "map.h"
 
-// vérifier la rayon mimimal dans la formule
+void ReinitialiserCarte(int tab[][LARGEUR_MAP])
+{
+   for(int x = 0; x < LONGUEUR_MAP; ++x)
+   {
+      for(int y = 0; y < LARGEUR_MAP; ++y)
+      {
+         tab[x][y] = 0;
+      }
+   }
+}
+
+void afficherMap(int tab[][LARGEUR_MAP])
+{
+   for(int x = 0; x < LONGUEUR_MAP; ++x)
+   {
+      cout << endl << " | ";
+      
+      for(int y = 0; y < LARGEUR_MAP; ++y)
+      {
+         cout << tab[x][y] << " | ";
+      }
+   }
+}
 
 void creationCarte(int tab[][LARGEUR_MAP], int nbObjet)
 {
@@ -48,7 +70,7 @@ void creationLac(int tab[][LARGEUR_MAP], int rayon, int nbLac)
             continue;
          }
          
-          for(int x = 0-rayon; x <= rayon; ++x)
+         for(int x = 0-rayon; x <= rayon; ++x)
          {
             for(int y = 0-rayon; y <= rayon; ++y)
             {
