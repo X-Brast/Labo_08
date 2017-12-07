@@ -8,6 +8,14 @@
 #include "map.h"
 #include "aleatoire.h"
 
+void initialisationExplorateur( int explorateur[][ATTRIBUTS] ){
+   
+   explorateur[0][Attributs::positionX] = 3 ; //TODO : randomize
+   explorateur[0][Attributs::positionY] = 3 ;
+   explorateur[0][Attributs::status] = Status::OK ;
+   explorateur[0][Attributs::nbMouvement] = 0 ;
+}
+
 void initialisationPosition( int& positionX , int& positionY , int& nbMouvement , int& status ){
    //Random position entre positionX <= maxX et et positionY <= maxY
    //Pour tester au début
@@ -18,6 +26,7 @@ void initialisationPosition( int& positionX , int& positionY , int& nbMouvement 
 }
 void avancerCase( int& positionX , int& positionY ){
 
+   cout << "avanceCase : " << positionX << endl ; 
    enum Direction { NORD , SUD , OUEST , EST } ;
    //Random de la direction , Nord Sud Ouest Est
    int direction = nombreAleatoire( 3 , 0 ) ;
@@ -49,7 +58,7 @@ void controleCase( int positionX , int positionY , int& status , int map[][LARGE
          break ;
    } 
 }
-
+/*
 void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMouvement , int map[][LARGEUR_MAP] ){
    
    //Initialisation de la position
@@ -75,6 +84,62 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
       controleCase( positionX , positionY , status, map ) ;
       //Si l'explorateur n'est pas OK , on arrête la simulation
       if( status != Status::OK ){
+         break ;
+      }
+   }while( true ) ;
+}
+*/
+
+void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] ){
+   
+   //Init de l'explorateur : 
+   // [x][0] : position X
+   // [x][1] : position Y
+   // [x][2] : status
+   // [x][3] : nombre de mouvement
+   
+   
+//   int positionX = explorateur[0][0] ;
+//   int positionY = explorateur[0][1] ;
+//   int status = explorateur[0][2] ;
+//   int nbMouvement = explorateur[0][3];
+//   
+   /*
+   explorateur[0][Attributs::positionX]
+   explorateur[0][Attributs::positionY]
+   explorateur[0][Attributs::status] 
+   explorateur[0][Attributs::nbMouvement]
+   */
+   //Initialisation de la position
+   //initialisationPosition( positionX , positionY , nbMouvement , status ) ;
+   initialisationExplorateur( explorateur ) ;
+   
+   //Init du random
+   initialiserAleatoire() ;
+   
+   //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
+   do{
+      //Controle si l'explorateur est epuisé
+      if( explorateur[0][Attributs::nbMouvement] >=  LARGEUR_MAP * LONGUEUR_MAP ){
+         explorateur[0][Attributs::status]  = Status::EPUISE ;
+         break ;
+      }
+
+      //Avancer d'une case
+      avancerCase(explorateur[0][Attributs::positionX] , explorateur[0][Attributs::positionY] ) ;
+      
+      explorateur[0][Attributs::nbMouvement] ++ ; 
+      
+      cout << endl << "position x: " << explorateur[0][Attributs::positionX] << endl 
+              << "position y : " << explorateur[0][Attributs::positionY] << endl ;
+      
+      //On controle si l'explorateur n'est pas mort , noyé , riche ou épuisé
+      controleCase( explorateur[0][Attributs::positionX] , 
+                    explorateur[0][Attributs::positionY] , 
+                    explorateur[0][Attributs::status], map ) ;
+      
+      //Si l'explorateur n'est pas OK , on arrête la simulation
+      if( explorateur[0][Attributs::status] != Status::OK ){
          break ;
       }
    }while( true ) ;

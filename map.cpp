@@ -7,7 +7,7 @@ void ReinitialiserCarte(int tab[][LARGEUR_MAP])
    {
       for(int y = 0; y < LARGEUR_MAP; ++y)
       {
-         tab[x][y] = ListeObjet::TERRE;
+         //tab[x][y] = ListeObjet::TERRE;
       }
    }
 }

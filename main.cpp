@@ -22,13 +22,22 @@
 int main() 
 {
    
-   //Position du chercheur
-   int positionX , positionY ;
-   
+   //A faire dans simulation ?
+   //Tabbleau d'information de l'explorateur :
    int explorateur[NB_UTILISATEUR][ATTRIBUTS] ;
    
-   int status = Status::OK ;
-   int nbMouvement = 0 ;
+   //Init de l'explorateur : 
+   // [x][0] : position X
+   // [x][1] : position Y
+   // [x][2] : status
+   // [x][3] : nombre de mouvement
+   
+           
+   //Position du chercheur
+//   int positionX , positionY ;
+//   
+//   int status = Status::OK ;
+//   int nbMouvement = 0 ;
   
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
    
@@ -40,7 +49,8 @@ int main()
       
       afficherMap(map);
       
-      lancerSimulation( positionX , positionY , status , nbMouvement , map );
+      //lancerSimulation( positionX , positionY , status , nbMouvement , map );
+      lancerSimulation( explorateur , map );
       
       cout << "Status de l'explorateur : " << status << endl ;
       
