@@ -30,10 +30,8 @@ void avancerCase( int& positionX , int& positionY ){
    }
 }
 
-//TODO : changer taille MAP
 void controleCase( int positionX , int positionY , int& status , int map[][LARGEUR_MAP] ){
    
-   //Status de l'explorateur ( 1: OK , 2: Perdu , 3: riche , 4: Epuisé , 5:noyé  )
    //Si la position est en dehors de la map
    if( positionX < 0 or positionY < 0 or positionX > LONGUEUR_MAP or positionY > LARGEUR_MAP ){
       status = Status::PERDU ;
@@ -41,12 +39,12 @@ void controleCase( int positionX , int positionY , int& status , int map[][LARGE
   
    switch( map[positionX][positionY]){
       //Si l'explorateur est tombé dans un lac
-      case 2 :
+      case int(ListeObjet::LAC) :
          status = Status::NOYE ;
          break ;
       
       //Si l'explorateur est tombé sur le trésor
-      case 3 :
+      case int(ListeObjet::TRESOR) :
          status = Status::RICHE ;
          break ;
    } 
@@ -71,7 +69,7 @@ void lancerSimulation( int& positionX , int& positionY , int& status , int& nbMo
       //Avancer d'une case
       avancerCase(positionX , positionY ) ;
       nbMouvement ++ ;
-      cout << "position x: " << positionX << endl << "position y : " << positionY << endl ;
+      cout << endl << "position x: " << positionX << endl << "position y : " << positionY << endl ;
       
       //On controle si l'explorateur n'est pas mort , noyé , riche ou épuisé
       controleCase( positionX , positionY , status, map ) ;

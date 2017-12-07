@@ -11,6 +11,8 @@ enum class ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC};
 
 const int LONGUEUR_MAP = 10;
 const int LARGEUR_MAP = 10;
+const int ATTRIBUTS = 4 ;
+const int NB_UTILISATEUR = 0 ; 
 
 void ReinitialiserCarte(int tab[][LARGEUR_MAP]);
 void afficherMap(int tab[][LARGEUR_MAP]);

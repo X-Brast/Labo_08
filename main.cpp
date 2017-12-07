@@ -22,21 +22,15 @@
 int main() 
 {
    
-   
-   //TODO : Faire en sorte que la taille de la map sois accessible depuis simulation.cpp
-   //const int maxX = 5 ;
-   //const int maxY = 5 ;
    //Position du chercheur
    int positionX , positionY ;
-   //Status de l'explorateur ( 1: OK , 2: Perdu , 3: riche , 4: Epuisé , 5:noyé  )
-   //TODO , faire un tableau ? ou un Enum
-   int status = 0 ;
+   
+   int explorateur[NB_UTILISATEUR][ATTRIBUTS] ;
+   
+   int status = Status::OK ;
    int nbMouvement = 0 ;
-
-   // 0 : terre , 1 : lac , 2 : explorateur , 3 : trésor
   
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
-  
    
    do
    {
@@ -46,6 +40,9 @@ int main()
       
       afficherMap(map);
       
+      lancerSimulation( positionX , positionY , status , nbMouvement , map );
+      
+      cout << "Status de l'explorateur : " << status << endl ;
       
    }while(recommencerProgramme());
    
