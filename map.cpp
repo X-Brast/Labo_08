@@ -40,7 +40,7 @@ void afficherMap(int tab[][LARGEUR_MAP])
    }
 }
 
-void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][Attributs])
+void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][ATTRIBUTS])
 {
    initialiserAleatoire();
    
@@ -119,7 +119,7 @@ void creationTresor(int tab[][LARGEUR_MAP], int nbTresor)
    }
 }
 
-void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUtilisateur[][Attributs])
+void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUtilisateur[][ATTRIBUTS])
 {
    for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
    {

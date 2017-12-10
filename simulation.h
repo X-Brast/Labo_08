@@ -19,6 +19,7 @@
 #include <iostream>
 #include <iomanip>
 #include "map.h"
+#include "variable.h"
 
 using namespace std ; 
 
