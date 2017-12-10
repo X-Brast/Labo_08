@@ -1,3 +1,18 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo_08
+ Fichier     : simulation.h
+ Auteur(s)   : Alexandre Marques & Maurice Lehmann
+ Date        : 05.12.2017
+
+ But         : 
+
+ Remarque(s) : 
+
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
+*/
+
 #ifndef SIMULATION_H
 #define SIMULATION_H
 

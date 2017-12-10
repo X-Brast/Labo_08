@@ -6,6 +6,7 @@
  Date        : 05.12.2017
 
  But         : Déclaration des fonctions et constantes de saisie.cpp 
+ 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */

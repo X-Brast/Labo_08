@@ -6,6 +6,7 @@
  Date        : 05.12.2017
 
  But         : Contient les fonctions relative aux saisies utilisateur
+ 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */

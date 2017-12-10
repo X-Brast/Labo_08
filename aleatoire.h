@@ -1,9 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo_07
+ Laboratoire : Labo_08
  Fichier     : aleatoire.h
- Auteur(s)   : Alexandre Marques & Simon Walther
- Date        : 27.11.2017
+ Auteur(s)   : Alexandre Marques & Maurice Lehmann
+ Date        : 05.12.2017
 
  But         : prototypes des fonctions d'aleatoire.h
 

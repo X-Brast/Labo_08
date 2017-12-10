@@ -1,18 +1,21 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo_08
+ Fichier     : main.cpp
+ Auteur(s)   : Alexandre Marques & Maurice Lehmann
+ Date        : 05.12.2017
 
-/* 
- * File:   main.cpp
- * Author: alexa
- *
- * Created on 4. décembre 2017, 11:02
- */
+ But         : 
+
+ Remarque(s) : 
+
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
+*/
 
 #include <cstdlib>
 #include <stdlib.h>
+#include "variable.h"
 #include "simulation.h"
 #include "saisie.h"
 #include "map.h"

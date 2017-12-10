@@ -1,9 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo_07
- Fichier     : aleatoire.cpp
- Auteur(s)   : Alexandre Marques & Simon Walther
- Date        : 27.11.2017
+ Laboratoire : Labo_08
+ Fichier     : variable.h
+ Auteur(s)   : Alexandre Marques & Maurice Lehmann
+ Date        : 05.12.2017
 
  But         : contient des fonctions permettant d'obtenir des nombres aléatoires
 

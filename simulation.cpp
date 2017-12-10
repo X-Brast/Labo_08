@@ -1,4 +1,20 @@
 /*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo_08
+ Fichier     : simulation.cpp
+ Auteur(s)   : Alexandre Marques & Maurice Lehmann
+ Date        : 05.12.2017
+
+ But         : 
+
+ Remarque(s) : 
+
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
+*/
+
+
+/*
  * Status de l'explorateur ( 1: OK , 2: Perdu , 3: riche , 4: Epuisé , 5:noyé  )
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
