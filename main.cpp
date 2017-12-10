@@ -34,21 +34,28 @@ int main()
    // [x][1] : position Y
    // [x][2] : status
    // [x][3] : nombre de mouvement
-   
-           
+     
    //Position du chercheur
-//   int positionX , positionY ;
-//   
-//   int status = Status::OK ;
-//   int nbMouvement = 0 ;
-  
+   //   int positionX , positionY ;
+   //   
+   //   int status = Status::OK ;
+   //   int nbMouvement = 0 ;
+     
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
+   
+   int nbObjet = (int)ListeObjet::NB_OBJET - 1;
+   
+   cout << "Ce programme permet de faire des statistique pour trouver le tresor" << endl << endl;
    
    do
    {
+      int nbSimulation = saisir(1,10000, "Veuillez insÃ©rer le nombre de simluation voulu");
+      
+      int historiqueEvenement[nbSimulation][STAT_EVENEMENT];
+      
       ReinitialiserCarte(map);
       
-      creationCarte(map, 3);
+      creationCarte(map, nbObjet, explorateur);
       
       afficherMap(map);
       

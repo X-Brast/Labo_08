@@ -25,8 +25,8 @@ using namespace std ;
 
 //Enum des status
 //Status de l'explorateur ( 0: OK , 1: Perdu , 2: riche , 3: Epuisé , 4:noyé  )
-enum Status { OK , PERDU , RICHE , EPUISE , NOYE } ;
-enum Attributs { positionX , positionY , status , nbMouvement } ;
+/*enum Status { OK , PERDU , RICHE , EPUISE , NOYE } ;
+enum Attributs { positionX , positionY , status , nbMouvement } ;*/
 
 
 void initialisationPosition( int& positionX , int& positionY  , int& nbMouvement , int& status );

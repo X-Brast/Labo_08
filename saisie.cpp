@@ -51,7 +51,7 @@ bool recommencerProgramme()
    return recommencerProgramme ;
 }
 
-int saisir(const int& valeurMin, const int& valeurMax, const std::string& message) 
+int saisir(const int& valeurMin, const int& valeurMax, const string& message) 
 {
    int valeurSaisie;
    bool erreur;
@@ -60,20 +60,20 @@ int saisir(const int& valeurMin, const int& valeurMax, const std::string& messag
    {
       erreur = false;
       
-      cout << std::endl << message << "[" << valeurMin << ".." << valeurMax << "] : ";
+      cout << endl << message << "[" << valeurMin << ".." << valeurMax << "] : ";
       cin >> valeurSaisie;
       
       // si l'utilisateur entre une valeur qui ne peut pas être comparée en int
       // on gére l'erreur
       if(cin.fail() || controleSaisie(valeurSaisie, valeurMin, valeurMax)) 
       {
-         valeurSaisie = std::numeric_limits<int>::min(); // cas d'erreur 
+         valeurSaisie = numeric_limits<int>::min(); // cas d'erreur 
          cout << "Valeur incorrecte ! ";
          cin.clear();
          erreur = true;
       }
       
-      cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');  
       
    } while(erreur);
    

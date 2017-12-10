@@ -14,6 +14,7 @@
 */
 
 #include "map.h"
+#include "simulation.h"
 
 void ReinitialiserCarte(int tab[][LARGEUR_MAP])
 {
@@ -39,20 +40,20 @@ void afficherMap(int tab[][LARGEUR_MAP])
    }
 }
 
-void creationCarte(int tab[][LARGEUR_MAP], int nbObjet)
+void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][Attributs])
 {
    initialiserAleatoire();
    
    switch(ListeObjet(nbObjet))
    {
       case ListeObjet::LAC:
-         creationLac(tab,3,3);
+         creationLac(map,3,3);
          
       case ListeObjet::TRESOR:
-         creationTresor(tab);
+         creationTresor(map);
          
       case ListeObjet::UTILISATEUR:
-         emplacementUtilisateur(tab);
+         emplacementUtilisateur(map, NB_UTILISATEUR+1 ,tabUtilisateur);
          
       default:
          break;
@@ -118,7 +119,7 @@ void creationTresor(int tab[][LARGEUR_MAP], int nbTresor)
    }
 }
 
-void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur)
+void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUtilisateur[][Attributs])
 {
    for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
    {
@@ -132,6 +133,11 @@ void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur)
       }
 
       tab[posX_Utilisateur][posY_Utilisateur] = (int)ListeObjet::UTILISATEUR;
+      
+      tabUtilisateur[nbIteration][Attributs::positionX]     = posX_Utilisateur;
+      tabUtilisateur[nbIteration][Attributs::positionY]     = posY_Utilisateur;
+      tabUtilisateur[nbIteration][Attributs::status]        = Status::OK;
+      tabUtilisateur[nbIteration][Attributs::nbMouvement]   = 0;
    }
 }
 

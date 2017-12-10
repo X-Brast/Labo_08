@@ -24,12 +24,15 @@
 #include "map.h"
 #include "aleatoire.h"
 
-void initialisationExplorateur( int explorateur[][ATTRIBUTS] ){
-   
-   explorateur[0][Attributs::positionX] = 3 ; //TODO : randomize
-   explorateur[0][Attributs::positionY] = 3 ;
-   explorateur[0][Attributs::status] = Status::OK ;
-   explorateur[0][Attributs::nbMouvement] = 0 ;
+void initialisationExplorateur( int explorateur[][ATTRIBUTS] )
+{
+   for (int nbIteration = 0; nbIteration <= NB_UTILISATEUR; ++nbIteration)
+   {
+      explorateur[nbIteration][Attributs::positionX] = 3 ; //TODO : randomize
+      explorateur[nbIteration][Attributs::positionY] = 3 ;
+      explorateur[nbIteration][Attributs::status] = Status::OK ;
+      explorateur[nbIteration][Attributs::nbMouvement] = 0 ;
+   }
 }
 
 void initialisationPosition( int& positionX , int& positionY , int& nbMouvement , int& status ){
@@ -40,6 +43,7 @@ void initialisationPosition( int& positionX , int& positionY , int& nbMouvement 
    nbMouvement = 0 ;
    status = Status::OK ;
 }
+
 void avancerCase( int& positionX , int& positionY ){
 
    cout << "avanceCase : " << positionX << endl ; 
