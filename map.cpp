@@ -44,16 +44,19 @@ void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][ATT
 {
    initialiserAleatoire();
    
+   int nbLacs = 3;
+   
    switch(ListeObjet(nbObjet))
    {
       case ListeObjet::LAC:
-         creationLac(map,3,3);
+         creationLac(map, nbLacs);
          
       case ListeObjet::TRESOR:
          creationTresor(map);
          
+      // toujours faire en dernier
       case ListeObjet::UTILISATEUR:
-         emplacementUtilisateur(map, NB_UTILISATEUR+1 ,tabUtilisateur);
+         creationUtilisateur(map ,tabUtilisateur);
          
       default:
          break;
@@ -89,15 +92,33 @@ void creationLac(int tab[][LARGEUR_MAP], int rayon, int nbLac)
          {
             for(int y = 0-rayon; y <= rayon; ++y)
             {
-               if(abs(x) + abs(y) <= rayon)
+               if(abs(x) + abs(y) <= rayon && (posX_Lac + x) >= 0 && (posX_Lac + x) < LONGUEUR_MAP && (posY_Lac + y) >= 0 && (posY_Lac + y) < LARGEUR_MAP)
                {
-                  if((posX_Lac + x) >= 0 && (posX_Lac + x) < LONGUEUR_MAP && (posY_Lac + y) >= 0 && (posY_Lac + y) < LARGEUR_MAP)
-                  {
-                     tab[posX_Lac + x][posY_Lac + y] = (int)ListeObjet::LAC;
-                  }
+                  tab[posX_Lac + x][posY_Lac + y] = (int)ListeObjet::LAC;
                }
             }
          }
+      }
+   }
+}
+
+void creationLac(int tab[][LARGEUR_MAP], int nbLac)
+{
+   int rayon = 0;
+   
+   for(int numLac = 1; numLac <= nbLac; ++numLac)
+   {
+      if(LONGUEUR_MAP < LARGEUR_MAP)
+      {
+         rayon = nombreAleatoire((int)LARGEUR_MAP / 3, 1);
+         cout << rayon << endl;
+         creationLac(tab, rayon, 1);
+      }
+      else
+      {
+         rayon = nombreAleatoire((int)LONGUEUR_MAP / 3, 1);
+         cout << rayon << endl;
+         creationLac(tab, rayon, 1);
       }
    }
 }
@@ -119,14 +140,14 @@ void creationTresor(int tab[][LARGEUR_MAP], int nbTresor)
    }
 }
 
-void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUtilisateur[][ATTRIBUTS])
+void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][ATTRIBUTS], int nbUtilisateur)
 {
    for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
    {
       int posX_Utilisateur = nombreAleatoire(LONGUEUR_MAP);
       int posY_Utilisateur = nombreAleatoire(LONGUEUR_MAP);
 
-      if(tab[posX_Utilisateur][posY_Utilisateur] != 0)
+      if(tab[posX_Utilisateur][posY_Utilisateur] != 0 || caseUtiliserParUtilisateur(tabUtilisateur, posX_Utilisateur, posY_Utilisateur))
       {
          nbIteration--;
          continue;
@@ -137,6 +158,19 @@ void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUt
       tabUtilisateur[nbIteration][Attributs::status]        = Status::OK;
       tabUtilisateur[nbIteration][Attributs::nbMouvement]   = 0;
    }
+}
+
+bool caseUtiliserParUtilisateur(const int tabUtilisateur[][ATTRIBUTS], const int posX, const int posY, const int nbUtilisateur)
+{
+   for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
+   {
+      if(tabUtilisateur[nbIteration][Attributs::positionX] == posX && tabUtilisateur[nbIteration][Attributs::positionY] == posY)
+      {
+         return true;
+      }
+   }
+   
+   return false;
 }
 
 bool verificationObjetLargeMap(const int tab[][LARGEUR_MAP], const int& posX, const int& posY, const int& rayon)

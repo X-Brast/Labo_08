@@ -19,7 +19,7 @@
 
 int nombreAleatoire(const int& maxValue, const int& minValue)
 {     
-   return rand() % (maxValue-minValue) + minValue;
+   return rand() % (maxValue-minValue + 1) + minValue;
 }
 
 void initialiserAleatoire()

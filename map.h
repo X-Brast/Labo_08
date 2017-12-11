@@ -34,9 +34,11 @@ void ReinitialiserCarte(int tab[][LARGEUR_MAP]);
 void afficherMap(int tab[][LARGEUR_MAP]);
 
 void creationCarte(int tab[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][ATTRIBUTS]);
-void creationLac(int tab[][LARGEUR_MAP], int rayon = 1, int nbLac = 1);
+void creationLac(int tab[][LARGEUR_MAP], int nbLac);
+void creationLac(int tab[][LARGEUR_MAP], int rayon, int nbLac);
 void creationTresor(int tab[][LARGEUR_MAP], int nbTresor = 1);
-void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUtilisateur[][ATTRIBUTS]);
+void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][ATTRIBUTS], int nbUtilisateur = NB_UTILISATEUR+1);
+bool caseUtiliserParUtilisateur(const int tabUtilisateur[][ATTRIBUTS], const int posX, const int posY, const int nbUtilisateur = NB_UTILISATEUR+1);
 bool verificationObjetLargeMap(const int tab[][LARGEUR_MAP], const int& posX, const int& posY, const int& rayon = 1);
 
 #endif /* MAP_H */
