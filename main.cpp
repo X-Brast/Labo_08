@@ -24,8 +24,7 @@
 
 int main() 
 {
-   
-   //A faire dans simulation ?
+
    //Tabbleau d'information de l'explorateur :
    int explorateur[NB_UTILISATEUR][ATTRIBUTS] ;
    
@@ -49,7 +48,7 @@ int main()
    
    do
    {
-      int nbSimulation = saisir(1,10000, "Veuillez insÃ©rer le nombre de simluation voulu");
+      int nbSimulation = saisir(1,10000, "Veuillez inserer le nombre de simluation voulu");
       
       int historiqueEvenement[nbSimulation][STAT_EVENEMENT];
       

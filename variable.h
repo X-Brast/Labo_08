@@ -16,7 +16,7 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-enum class ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC, NB_OBJET};
+enum ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC, NB_OBJET};
 
 enum Status { OK , PERDU , RICHE , EPUISE , NOYE } ;
 enum Attributs { positionX , positionY , status , nbMouvement } ;
