@@ -17,6 +17,26 @@
 #include "aleatoire.h"
 
 
+void remplirStatistique( int explorateur[][ATTRIBUTS] , int historiqueEvenement[][STAT_EVENEMENT] , int simulation ){
+   
+   //On ajoute le numéro d'explorateur
+   historiqueEvenement[simulation][0] = 0 ;
+   //On ajoute le status
+   historiqueEvenement[simulation][1] = explorateur[0][Attributs::status] ;
+   //On ajoute le nombre de pas
+   historiqueEvenement[simulation][2] = explorateur[0][Attributs::nbMouvement] ;
+   
+}
+
+void relacerExplorateur( int posInitialX , int posInitialY , int explorateur[][ATTRIBUTS] ){
+   
+   explorateur[0][Attributs::positionX] = posInitialX ;
+   explorateur[0][Attributs::positionY] = posInitialY ;
+   explorateur[0][Attributs::status]    = Status::OK ;
+   explorateur[0][Attributs::nbMouvement] = 0 ;
+   
+}
+
 void avancerCase( int& positionX , int& positionY ){
 
    enum Direction { NORD , SUD , OUEST , EST } ;
@@ -65,30 +85,43 @@ void controleCase( int explorateur[][ATTRIBUTS], int map[][LARGEUR_MAP] ){
    } 
 }
 
-void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][STAT_EVENEMENT]){
+void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][STAT_EVENEMENT] , const int& nbSimulation){
    
    //Init du random
    initialiserAleatoire() ;
    
+   //On récupère les positions initiales de l'explorateur
+   int posInitialX = explorateur[0][Attributs::positionX] ; 
+   int posInitialY = explorateur[0][Attributs::positionY] ;
+   
    //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
-   do{
+   for( int simulation = 0 ; simulation != nbSimulation ; simulation ++ ){
       
-      //Controle sur quelle case l'explorateur est
-      controleCase( explorateur , map ) ;
+      cout << "simulation numero  : " << simulation << endl ;
       
-      //Si l'explorateur n'est pas OK , on arrête la simulation
-      if( explorateur[0][Attributs::status] != Status::OK ){
-         break ;
-      }
+      bool continuer = true ;
+      
+      do{
+         //Controle sur quelle case l'explorateur est
+         controleCase( explorateur , map ) ;
+      
+         //Si l'explorateur n'est pas OK , on arrête la simulation
+         if( explorateur[0][Attributs::status] != Status::OK ){
+            continuer = false  ;
+         }
+         //Avancer d'une case
+         avancerCase(explorateur[0][Attributs::positionX] , explorateur[0][Attributs::positionY] ) ;
+      
+         //Incrémentation du nombre de pas effectués
+         explorateur[0][Attributs::nbMouvement] ++ ; 
+      
+      }while(continuer) ;
+      
+      //Remplir les statistiques
+      remplirStatistique( explorateur , historiqueEvenement , simulation ) ;
+      //Remettre l'explorateur dans à sa position initiale
+      relacerExplorateur( posInitialX , posInitialY , explorateur ) ;
 
-      //Avancer d'une case
-      avancerCase(explorateur[0][Attributs::positionX] , explorateur[0][Attributs::positionY] ) ;
-      
-      //Incrémentation du nombre de pas effectués
-      explorateur[0][Attributs::nbMouvement] ++ ; 
-      
-      cout << endl << "position x: " << explorateur[0][Attributs::positionX] << endl 
-              << "position y : " << explorateur[0][Attributs::positionY] << endl ;
-      
-   }while( true ) ;
+   } //end for
+
 }
