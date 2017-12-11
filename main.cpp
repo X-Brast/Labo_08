@@ -46,13 +46,29 @@ int main()
       
       afficherMap(map);
       
-      //lancerSimulation( positionX , positionY , status , nbMouvement , map );
-      lancerSimulation( explorateur , map , historiqueEvenement );
+      lancerSimulation( explorateur , map , historiqueEvenement , nbSimulation );
       
       cout << "Status de l'explorateur : " << explorateur[0][Attributs::status] << endl ;
       
+      
+      
+      //STATISTIQUE :
+      cout << "-------------------" << endl
+              << "STATS  : " << endl
+              << "------------------" << endl ;
+      //Pour tester les stats :
+      for( int i = 0 ; i != nbSimulation ; i ++ ){
+         for( int val = 0 ; val != STAT_EVENEMENT ; val ++ ){
+            
+            cout << historiqueEvenement[i][val] << " " ;
+            
+         }
+         cout << endl ;
+      }
+      
+      
    }while(recommencerProgramme());
-   
+  
    return EXIT_SUCCESS;
 }
 
