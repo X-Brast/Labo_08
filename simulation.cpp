@@ -97,8 +97,6 @@ void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , i
    //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
    for( int simulation = 0 ; simulation != nbSimulation ; simulation ++ ){
       
-      cout << "simulation numero  : " << simulation << endl ;
-      
       bool continuer = true ;
       
       do{

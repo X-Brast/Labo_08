@@ -12,14 +12,20 @@
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */
-#include "statistique.h"
 
+#include "statistique.h"
+#include "variable.h"
+
+void afficherStatistique(const int tabStatPartie[][STAT_EVENEMENT]){
+   
+   cout << "STATS:  " << endl ;
+}
 
 double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nbElement, int& nombrePasMoyen)
 {
    int nbTresorTrouver = 0;
    int nombrePas = 0;
-   
+  
    for(int pos = 0; pos < nbElement; ++pos)
    {
       if(tabStatPartie[pos][1] == Status::RICHE)

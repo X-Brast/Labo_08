@@ -1,13 +1,13 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08
- Fichier     : variable.h
+ Fichier     : statistique.h
  Auteur(s)   : Alexandre Marques & Maurice Lehmann
  Date        : 05.12.2017
 
  But         : accéder à des variables globals et enum
 
- Remarque(s) : il faut ajouter cet header dans chaque fichier header de ce projet
+ Remarque(s) :
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -16,8 +16,13 @@
 #ifndef STATISTIQUE_H
 #define STATISTIQUE_H
 
+#include <iostream>
+#include <stdlib.h>
 #include "variable.h"
 
+using namespace std ; 
+
+void afficherStatistique(const int tabStatPartie[][STAT_EVENEMENT]);
 double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nbElement, int& nombrePasMoyen);
 
 #endif /* STATISTIQUE_H */
