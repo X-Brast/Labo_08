@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include "variable.h"
 #include "simulation.h"
+#include "statistique.h"
 #include "saisie.h"
 #include "map.h"
 
