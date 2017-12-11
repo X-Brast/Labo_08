@@ -16,12 +16,27 @@
 #include "statistique.h"
 #include "variable.h"
 
-void afficherStatistique(const int tabStatPartie[][STAT_EVENEMENT]){
+void afficherStatistique(const int tabStatPartie[][StatEvent::NB_STAT], int nbSimulation)
+{
+   int nombrePasMoyen = 0;
+   double MoyenneTresorTrouver = 0;
    
-   cout << "STATS:  " << endl ;
+   MoyenneTresorTrouver = PourcetageTrouverTresor(tabStatPartie, nbSimulation, nombrePasMoyen);
+   
+   cout << endl << "STATS:  " << endl ;
+   if(MoyenneTresorTrouver)
+   {
+      cout << "Il y a eu " << MoyenneTresorTrouver << "% de chercheur qui ont trouve le tresor." << endl;
+      cout << "Le nombre de pas moyen pour trouver le tresor fut de " << nombrePasMoyen << " pas." << endl;
+   }
+   else
+   {
+      cout << "Malheureusement, personne n'a trouve le tresor sur cette ile." << endl;
+      cout << "Ils auront plus de chance la prochaine fois" << endl;
+   }
 }
 
-double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nbElement, int& nombrePasMoyen)
+double PourcetageTrouverTresor(const int tabStatPartie[][StatEvent::NB_STAT], int nbElement, int& nombrePasMoyen)
 {
    int nbTresorTrouver = 0;
    int nombrePas = 0;
@@ -31,11 +46,18 @@ double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nb
       if(tabStatPartie[pos][1] == Status::RICHE)
       {
          nbTresorTrouver ++;
-         nombrePas = tabStatPartie[pos][2];
+         nombrePas += tabStatPartie[pos][2];
       }
    }
    
-   nombrePasMoyen = nombrePas/nbTresorTrouver;
+   if(nbTresorTrouver)
+   {
+      nombrePasMoyen = nombrePas/nbTresorTrouver;
+   }
+   else
+   {
+      nombrePasMoyen = nombrePas;
+   }
    
    double moy = (double)nbTresorTrouver / (double)nbElement;
    

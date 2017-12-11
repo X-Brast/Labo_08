@@ -13,7 +13,7 @@
 
 #include "saisie.h"
 
-bool controleSaisie( int valeur , unsigned int limiteInf , unsigned limiteSup)
+bool controleSaisie( int valeur , unsigned int limiteInf , unsigned int limiteSup)
 {
    //Controle d'une valeur entre deux bornes
    return (valeur < limiteInf or valeur > limiteSup);
@@ -28,7 +28,7 @@ bool recommencerProgramme()
    // Demande de recommencer le programme
    do 
    {
-      cout << "Voulez-vous recommencer le programme ? " << endl
+      cout << endl << "Voulez-vous recommencer le programme ? " << endl
            << "(si non, le programme se terminera) [O/N] : ";
 
       cin >> reponseUtilisateur;

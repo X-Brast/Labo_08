@@ -27,18 +27,19 @@ int main()
 {
 
    //Tableau d'information de l'explorateur :
-   int explorateur[NB_UTILISATEUR][ATTRIBUTS] ;
+   int explorateur[NB_UTILISATEUR][Attributs::NB_ATTRIBUTS] ;
      
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
    
+   // la terre n'étant pas un objet nous deveons la retirer
    int nbObjet = ListeObjet::NB_OBJET - 1;
      
    cout << "Ce programme permet de faire des statistique pour trouver le tresor" << endl << endl;
    
    do
    {
-      int nbSimulation = saisir(1,10000000, "Veuillez inserer le nombre de simluation voulu");
-      int historiqueEvenement[nbSimulation][STAT_EVENEMENT];
+      int nbSimulation = saisir(1,100000, "Veuillez inserer le nombre de simluation voulu");
+      int historiqueEvenement[nbSimulation][StatEvent::NB_STAT];
       
       ReinitialiserCarte(map);
       
@@ -46,9 +47,11 @@ int main()
       
       afficherMap(map);
       
+      cout << explorateur[0][0] << " - " << explorateur[0][1] << endl;
+      
       lancerSimulation( explorateur , map , historiqueEvenement , nbSimulation );
          
-      afficherStatistique( historiqueEvenement ) ;
+      afficherStatistique( historiqueEvenement , nbSimulation ) ;
       
    }while(recommencerProgramme());
   

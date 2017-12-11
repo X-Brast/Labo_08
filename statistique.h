@@ -22,8 +22,8 @@
 
 using namespace std ; 
 
-void afficherStatistique(const int tabStatPartie[][STAT_EVENEMENT]);
-double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nbElement, int& nombrePasMoyen);
+void afficherStatistique(const int tabStatPartie[][StatEvent::NB_STAT], int nbSimulation);
+double PourcetageTrouverTresor(const int tabStatPartie[][StatEvent::NB_STAT], int nbElement, int& nombrePasMoyen);
 
 #endif /* STATISTIQUE_H */
 

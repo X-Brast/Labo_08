@@ -38,9 +38,11 @@ void afficherMap(int tab[][LARGEUR_MAP])
          cout << tab[x][y] << " | ";
       }
    }
+   
+   cout << endl;
 }
 
-void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][ATTRIBUTS])
+void creationCarte(int map[][LARGEUR_MAP], int nbObjet, int tabUtilisateur[][Attributs::NB_ATTRIBUTS])
 {
    initialiserAleatoire();
    
@@ -72,8 +74,8 @@ void creationLac(int tab[][LARGEUR_MAP], int rayon, int nbLac)
       
       for(int nbIteration = 0; nbIteration < nbLac; ++nbIteration)
       {
-         int posX_Lac = nombreAleatoire(LONGUEUR_MAP);
-         int posY_Lac = nombreAleatoire(LONGUEUR_MAP);
+         int posX_Lac = nombreAleatoire(LONGUEUR_MAP - 1);
+         int posY_Lac = nombreAleatoire(LARGEUR_MAP - 1);
          
          // verification du centre avant de lancer toutes les vérifications du lac
          if(tab[posX_Lac][posY_Lac] != 0)
@@ -87,6 +89,8 @@ void creationLac(int tab[][LARGEUR_MAP], int rayon, int nbLac)
             nbIteration--;
             continue;
          }
+         
+         //cout << posX_Lac << " - " << posY_Lac << endl;
          
          for(int x = 0-rayon; x <= rayon; ++x)
          {
@@ -110,14 +114,12 @@ void creationLac(int tab[][LARGEUR_MAP], int nbLac)
    {
       if(LONGUEUR_MAP < LARGEUR_MAP)
       {
-         rayon = nombreAleatoire((int)LARGEUR_MAP / 3, 1);
-         cout << rayon << endl;
+         rayon = nombreAleatoire(((int)LARGEUR_MAP / 3) + 1, 1);
          creationLac(tab, rayon, 1);
       }
       else
       {
-         rayon = nombreAleatoire((int)LONGUEUR_MAP / 3, 1);
-         cout << rayon << endl;
+         rayon = nombreAleatoire(((int)LONGUEUR_MAP / 3) + 1, 1);
          creationLac(tab, rayon, 1);
       }
    }
@@ -127,8 +129,8 @@ void creationTresor(int tab[][LARGEUR_MAP], int nbTresor)
 {
    for(int nbIteration = 0; nbIteration < nbTresor; ++nbIteration)
    {
-      int posX_Tresor = nombreAleatoire(LONGUEUR_MAP);
-      int posY_Tresor = nombreAleatoire(LONGUEUR_MAP);
+      int posX_Tresor = nombreAleatoire(LONGUEUR_MAP - 1);
+      int posY_Tresor = nombreAleatoire(LARGEUR_MAP - 1);
 
       if(tab[posX_Tresor][posY_Tresor] != 0)
       {
@@ -140,12 +142,12 @@ void creationTresor(int tab[][LARGEUR_MAP], int nbTresor)
    }
 }
 
-void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][ATTRIBUTS], int nbUtilisateur)
+void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][Attributs::NB_ATTRIBUTS], int nbUtilisateur)
 {
    for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
    {
-      int posX_Utilisateur = nombreAleatoire(LONGUEUR_MAP);
-      int posY_Utilisateur = nombreAleatoire(LONGUEUR_MAP);
+      int posX_Utilisateur = nombreAleatoire(LONGUEUR_MAP -1);
+      int posY_Utilisateur = nombreAleatoire(LONGUEUR_MAP -1);
 
       if(tab[posX_Utilisateur][posY_Utilisateur] != 0 || caseUtiliserParUtilisateur(tabUtilisateur, posX_Utilisateur, posY_Utilisateur))
       {
@@ -160,7 +162,7 @@ void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][ATTRIBUTS]
    }
 }
 
-bool caseUtiliserParUtilisateur(const int tabUtilisateur[][ATTRIBUTS], const int posX, const int posY, const int nbUtilisateur)
+bool caseUtiliserParUtilisateur(const int tabUtilisateur[][Attributs::NB_ATTRIBUTS], const int posX, const int posY, const int nbUtilisateur)
 {
    for(int nbIteration = 0; nbIteration < nbUtilisateur; ++nbIteration)
    {

@@ -17,7 +17,7 @@
 #include "aleatoire.h"
 
 
-void remplirStatistique( int explorateur[][ATTRIBUTS] , int historiqueEvenement[][STAT_EVENEMENT] , int simulation ){
+void remplirStatistique( int explorateur[][Attributs::NB_ATTRIBUTS] , int historiqueEvenement[][StatEvent::NB_STAT] , int simulation ){
    
    //On ajoute le numéro d'explorateur
    historiqueEvenement[simulation][0] = 0 ;
@@ -28,7 +28,7 @@ void remplirStatistique( int explorateur[][ATTRIBUTS] , int historiqueEvenement[
    
 }
 
-void relacerExplorateur( int posInitialX , int posInitialY , int explorateur[][ATTRIBUTS] ){
+void relacerExplorateur( int posInitialX , int posInitialY , int explorateur[][Attributs::NB_ATTRIBUTS] ){
    
    explorateur[0][Attributs::positionX] = posInitialX ;
    explorateur[0][Attributs::positionY] = posInitialY ;
@@ -51,7 +51,7 @@ void avancerCase( int& positionX , int& positionY ){
    }
 }
 
-void controleCase( int explorateur[][ATTRIBUTS], int map[][LARGEUR_MAP] ){
+void controleCase( int explorateur[][Attributs::NB_ATTRIBUTS], int map[][LARGEUR_MAP] ){
    
    int posX = explorateur[0][Attributs::positionX] ;
    int posY = explorateur[0][Attributs::positionY] ;
@@ -85,7 +85,7 @@ void controleCase( int explorateur[][ATTRIBUTS], int map[][LARGEUR_MAP] ){
    } 
 }
 
-void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][STAT_EVENEMENT] , const int& nbSimulation){
+void lancerSimulation( int explorateur[][Attributs::NB_ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][StatEvent::NB_STAT] , const int& nbSimulation){
    
    //Init du random
    initialiserAleatoire() ;

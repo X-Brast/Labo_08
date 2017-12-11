@@ -25,10 +25,9 @@
     * Contrôle d'une valeur entre deux bornes
     * @param valeur : Valeur à tester
     * @param limiteInf , limiteSup : Borne inferieur et borne supérieur
-    * @param message : Message personnalisé
     * @return true si la valeur est plus grande que limiteInf et plus petite que limiteSup, sinon false.
     */
-   bool controleSaisie( int valeur , unsigned int limiteInf , unsigned limiteSup , string message);
+   bool controleSaisie( int valeur , unsigned int limiteInf , unsigned int limiteSup);
    
    /**
     * Demande à l'utlisateur si il veut recommencer le programme ( "O" pour oui , ou "N" pour non )
