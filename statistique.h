@@ -16,6 +16,9 @@
 #ifndef STATISTIQUE_H
 #define STATISTIQUE_H
 
+#include "variable.h"
+
+double PourcetageTrouverTresor(const int tabStatPartie[][STAT_EVENEMENT], int nbElement, int& nombrePasMoyen);
 
 #endif /* STATISTIQUE_H */
 
