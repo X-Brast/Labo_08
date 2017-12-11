@@ -25,24 +25,12 @@
 int main() 
 {
 
-   //Tabbleau d'information de l'explorateur :
+   //Tableau d'information de l'explorateur :
    int explorateur[NB_UTILISATEUR][ATTRIBUTS] ;
-   
-   //Init de l'explorateur : 
-   // [x][0] : position X
-   // [x][1] : position Y
-   // [x][2] : status
-   // [x][3] : nombre de mouvement
-     
-   //Position du chercheur
-   //   int positionX , positionY ;
-   //   
-   //   int status = Status::OK ;
-   //   int nbMouvement = 0 ;
      
    int map[LONGUEUR_MAP][LARGEUR_MAP] = {};
    
-   int nbObjet = (int)ListeObjet::NB_OBJET - 1;
+   int nbObjet = ListeObjet::NB_OBJET - 1;
    
    cout << "Ce programme permet de faire des statistique pour trouver le tresor" << endl << endl;
    
@@ -59,9 +47,9 @@ int main()
       afficherMap(map);
       
       //lancerSimulation( positionX , positionY , status , nbMouvement , map );
-      lancerSimulation( explorateur , map );
+      lancerSimulation( explorateur , map , historiqueEvenement );
       
-      cout << "Status de l'explorateur : " << status << endl ;
+      cout << "Status de l'explorateur : " << explorateur[0][Attributs::status] << endl ;
       
    }while(recommencerProgramme());
    

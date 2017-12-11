@@ -16,29 +16,9 @@
 #include "map.h"
 #include "aleatoire.h"
 
-void initialisationExplorateur( int explorateur[][ATTRIBUTS] )
-{
-   for (int nbIteration = 0; nbIteration <= NB_UTILISATEUR; ++nbIteration)
-   {
-      explorateur[nbIteration][Attributs::positionX] = 3 ; //TODO : randomize
-      explorateur[nbIteration][Attributs::positionY] = 3 ;
-      explorateur[nbIteration][Attributs::status] = Status::OK ;
-      explorateur[nbIteration][Attributs::nbMouvement] = 0 ;
-   }
-}
-
-void initialisationPosition( int& positionX , int& positionY , int& nbMouvement , int& status ){
-   //Random position entre positionX <= maxX et et positionY <= maxY
-   //Pour tester au début
-   positionX = 3 ;
-   positionY = 3 ;
-   nbMouvement = 0 ;
-   status = Status::OK ;
-}
 
 void avancerCase( int& positionX , int& positionY ){
 
-   cout << "avanceCase : " << positionX << endl ; 
    enum Direction { NORD , SUD , OUEST , EST } ;
    //Random de la direction , Nord Sud Ouest Est
    int direction = nombreAleatoire( 3 , 0 ) ;
@@ -85,10 +65,7 @@ void controleCase( int explorateur[][ATTRIBUTS], int map[][LARGEUR_MAP] ){
    } 
 }
 
-void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] ){
-   
-   //Initialisation de la position
-   initialisationExplorateur( explorateur ) ;
+void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][STAT_EVENEMENT]){
    
    //Init du random
    initialiserAleatoire() ;

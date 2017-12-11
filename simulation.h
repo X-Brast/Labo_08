@@ -23,11 +23,9 @@
 
 using namespace std ; 
 
-void initialisationPosition( int& positionX , int& positionY  , int& nbMouvement , int& status );
-void initialisationExplorateur( int explorateur[][ATTRIBUTS] ) ;
 void avancerCase( int& positionX , int& positionY ) ;
 void controleCase( int explorateur[][ATTRIBUTS], int map[][LARGEUR_MAP] );
-void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] );
+void lancerSimulation( int explorateur[][ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][STAT_EVENEMENT]);
    
 #endif /* SIMULATION_H */
 

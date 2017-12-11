@@ -25,8 +25,10 @@ const int LONGUEUR_MAP = 10;
 const int LARGEUR_MAP = 10;
 
 const int NB_UTILISATEUR = 0 ; 
+// pos X - pos Y - status - nombre pas
 const int ATTRIBUTS = 4 ;
 
+// numero utilisateur - dernier status - dernier nombre pas
 const int STAT_EVENEMENT = 3;
 
 #endif /* VARIABLE_H */

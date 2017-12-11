@@ -131,8 +131,6 @@ void emplacementUtilisateur(int tab[][LARGEUR_MAP], int nbUtilisateur, int tabUt
          nbIteration--;
          continue;
       }
-
-      tab[posX_Utilisateur][posY_Utilisateur] = (int)ListeObjet::UTILISATEUR;
       
       tabUtilisateur[nbIteration][Attributs::positionX]     = posX_Utilisateur;
       tabUtilisateur[nbIteration][Attributs::positionY]     = posY_Utilisateur;
