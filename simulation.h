@@ -45,11 +45,23 @@ void initialiserExplorateur( int posInitialX , int posInitialY , int explorateur
 void avancerCase( int& positionX , int& positionY ) ;
 
 /**
- * 
- * @param explorateur
- * @param map
+ * Controle sur quelle case l'explorateur est. 
+ * L'idée est de regarder directement dans la map, à l'aide des coordonées X et Y de l'explorateur.
+ * Selon la valeur trouvé , on change son status. C.à.d : OK , noyé , perdu ( en dehors de la map ) , epuisé ( si le nombre de pas est trop élevé )
+ * @param explorateur : Données relatives à l'explorateur
+ * @param map : Tableau de la carte
  */
 void controleCase( int explorateur[][Attributs::NB_ATTRIBUTS], int map[][LARGEUR_MAP] );
+/**
+ * Processus principal de simulation.cpp. 
+ * Lance chaque sous-processus de la simulation (c.à.d les fonctions déclarée plus haut)
+ * Il s'agit de la seule fonction appelée dans main.cpp
+ * 
+ * @param explorateur : Données relative à l'explorateur
+ * @param map : Tableau de la carte
+ * @param historiqueEvenement : Tableau contenant l'ensemble des données de l'explorateur
+ * @param nbSimulation : Le nombre de simulation à effectuer, avec le même explorateur
+ */
 void lancerSimulation( int explorateur[][Attributs::NB_ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][StatEvent::NB_STAT] , const int& nbSimulation );
    
 #endif /* SIMULATION_H */
