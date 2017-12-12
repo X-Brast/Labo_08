@@ -50,6 +50,8 @@ int main()
       cout << explorateur[0][0] << " - " << explorateur[0][1] << endl;
       
       lancerSimulation( explorateur , map , historiqueEvenement , nbSimulation );
+      
+      cout << explorateur[0][0] << " - " << explorateur[0][1] << endl;
          
       afficherStatistique( historiqueEvenement , nbSimulation ) ;
       

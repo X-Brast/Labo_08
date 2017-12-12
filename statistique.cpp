@@ -52,7 +52,7 @@ double PourcetageTrouverTresor(const int tabStatPartie[][StatEvent::NB_STAT], in
    
    if(nbTresorTrouver)
    {
-      nombrePasMoyen = nombrePas/nbTresorTrouver;
+      nombrePasMoyen = ceil((double)nombrePas/nbTresorTrouver);
    }
    else
    {

@@ -149,7 +149,7 @@ void creationUtilisateur(int tab[][LARGEUR_MAP], int tabUtilisateur[][Attributs:
       int posX_Utilisateur = nombreAleatoire(LONGUEUR_MAP -1);
       int posY_Utilisateur = nombreAleatoire(LONGUEUR_MAP -1);
 
-      if(tab[posX_Utilisateur][posY_Utilisateur] != 0 || caseUtiliserParUtilisateur(tabUtilisateur, posX_Utilisateur, posY_Utilisateur))
+      if(tab[posX_Utilisateur][posY_Utilisateur] != 0 && caseUtiliserParUtilisateur(tabUtilisateur, posX_Utilisateur, posY_Utilisateur))
       {
          nbIteration--;
          continue;

@@ -18,6 +18,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <cmath>
 #include "variable.h"
 
 using namespace std ; 
