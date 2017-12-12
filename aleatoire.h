@@ -7,8 +7,6 @@
 
  But         : prototypes des fonctions d'aleatoire.h
 
- Remarque(s) : 
-
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */

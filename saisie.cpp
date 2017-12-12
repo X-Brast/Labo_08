@@ -51,6 +51,37 @@ bool recommencerProgramme()
    return recommencerProgramme ;
 }
 
+bool DemandeAutorisationFonctionnalite(const string& message)
+{
+   char reponseUtilisateur ; 
+   bool saisieOK;
+   bool autoriser = false ; 
+   
+   // Demande de recommencer le programme
+   do 
+   {
+      cout << endl << message;
+
+      cin >> reponseUtilisateur;
+      
+      saisieOK = ( (reponseUtilisateur == 'O') || (reponseUtilisateur == 'N') || (reponseUtilisateur == 'o') || (reponseUtilisateur == 'n') );
+
+      if (!saisieOK){
+         cin.clear();
+         cout << "Votre saisie n'est pas valide." << endl << endl;
+      }
+      // Si la saisie est valide, on va initialiser le flag qui détermine si le
+      // programme doit recommencer.
+      else{
+         autoriser = (reponseUtilisateur == 'O') || (reponseUtilisateur == 'o');
+      }
+      VIDER_BUFFER;
+      
+   }while (!saisieOK);
+   
+   return autoriser ;
+}
+
 int saisir(const int& valeurMin, const int& valeurMax, const string& message) 
 {
    int valeurSaisie;

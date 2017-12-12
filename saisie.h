@@ -17,6 +17,7 @@
    #include <cstdlib>  // Pour exit_success
    #include <iostream> // Pour les entrées et sorties
    #include <limits>   // Pour vider le buffer
+   #include <string>   // pour utiliser les chaines de caractères
    #define VIDER_BUFFER if(cin.fail()) cin.clear(); cin.ignore(numeric_limits<streamsize>::max(), '\n')
       
    using namespace std ;
@@ -34,6 +35,13 @@
     * @return true si l'utilisateur entre "O" , false si l'utilisateur entre "N"
     */
    bool recommencerProgramme();
+   
+   /**
+    * permet à utilisateur de choisir si il veut accéder à un fonctionnalité ou non
+    * @param message : le message affiché à l'utilisateur
+    * @return        : la valeur saisie
+    */
+   bool DemandeAutorisationFonctionnalite(const string& message);
    
    /**
    * recupère un entier saisi par l'utilisateur dans un intervalle donné

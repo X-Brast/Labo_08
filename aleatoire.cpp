@@ -1,13 +1,11 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08
- Fichier     : variable.h
+ Fichier     : aleatoire.cpp
  Auteur(s)   : Alexandre Marques & Maurice Lehmann
  Date        : 05.12.2017
 
  But         : contient des fonctions permettant d'obtenir des nombres aléatoires
-
- Remarque(s) : 
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
