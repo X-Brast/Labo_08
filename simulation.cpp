@@ -5,13 +5,22 @@
  Auteur(s)   : Alexandre Marques & Maurice Lehmann
  Date        : 05.12.2017
 
- But         : 
-
- Remarque(s) : 
+ But         : Contient les fonctions effectuants la simulation de l'explorateur.
+               L'explorateur a des attributs ( position X , position Y , status , nombre de pas )
+               , qui seront remplies et testée.
+               La simulation fonctionne de la manière suivante :
+               Les caractéristique de l'explorateur sont initialisées
+               L'explorateur avance d'une case , c.à.d ces attributs "position X" et "position Y"
+               sont modifiés.
+               On contrôle sa position sur la map, si la valeur correspondante à une influence sur son status,
+               on le modifie et on arrête la simulation.
+               On retourne les données d'attributs de l'explorateur, qui seront traitées dans statistique.cpp
+            
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */
+
 #include "simulation.h"
 #include "map.h"
 #include "aleatoire.h"
@@ -28,11 +37,15 @@ void remplirStatistique( int explorateur[][Attributs::NB_ATTRIBUTS] , int histor
    
 }
 
-void relacerExplorateur( int posInitialX , int posInitialY , int explorateur[][Attributs::NB_ATTRIBUTS] ){
+void initialiserExplorateur( int posInitialX , int posInitialY , int explorateur[][Attributs::NB_ATTRIBUTS] ){
    
+   //(ré)Initialisation de la position X
    explorateur[0][Attributs::positionX] = posInitialX ;
+   //(ré)Initialisation de la position Y
    explorateur[0][Attributs::positionY] = posInitialY ;
+   //(ré)Initialisation du status
    explorateur[0][Attributs::status]    = Status::OK ;
+   //(ré)Initialisation du nombre de mouvement (pas)
    explorateur[0][Attributs::nbMouvement] = 0 ;
    
 }
@@ -44,15 +57,16 @@ void avancerCase( int& positionX , int& positionY ){
    int direction = nombreAleatoire( 3 , 0 ) ;
    
    switch( direction ){
-      case Direction::NORD : positionY -- ; break ; //Nord
-      case Direction::SUD  : positionY ++ ; break ; //Sud
-      case Direction::OUEST : positionX -- ; break ;//Ouest
-      case Direction::EST : positionX ++ ; break ;//Est
+      case Direction::NORD  : positionY -- ; break ; 
+      case Direction::SUD   : positionY ++ ; break ; 
+      case Direction::OUEST : positionX -- ; break ;
+      case Direction::EST   : positionX ++ ; break ;
    }
 }
 
 void controleCase( int explorateur[][Attributs::NB_ATTRIBUTS], int map[][LARGEUR_MAP] ){
    
+   //On copie les variables de position pour plus de lisibilité
    int posX = explorateur[0][Attributs::positionX] ;
    int posY = explorateur[0][Attributs::positionY] ;
    
@@ -87,19 +101,20 @@ void controleCase( int explorateur[][Attributs::NB_ATTRIBUTS], int map[][LARGEUR
 
 void lancerSimulation( int explorateur[][Attributs::NB_ATTRIBUTS] , int map[][LARGEUR_MAP] , int historiqueEvenement[][StatEvent::NB_STAT] , const int& nbSimulation){
    
-   //Init du random
+   //Initialisation du random
    initialiserAleatoire() ;
    
    //On récupère les positions initiales de l'explorateur
    int posInitialX = explorateur[0][Attributs::positionX] ; 
    int posInitialY = explorateur[0][Attributs::positionY] ;
    
-   //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
+   //On lance un nombre n fois de simulations , selon la saisie utilisateur
    for( int simulation = 0 ; simulation != nbSimulation ; simulation ++ ){
       
       bool continuer = true ;
-      
+      //L'explorateur marche jusqu'a changer de status ( epuisé , noyé , perdu , riche )
       do{
+         
          //Controle sur quelle case l'explorateur est
          controleCase( explorateur , map ) ;
       
@@ -107,18 +122,19 @@ void lancerSimulation( int explorateur[][Attributs::NB_ATTRIBUTS] , int map[][LA
          if( explorateur[0][Attributs::status] != Status::OK ){
             continuer = false  ;
          }
-         //Avancer d'une case
+         
+         //L'explorateur avance d'une case
          avancerCase(explorateur[0][Attributs::positionX] , explorateur[0][Attributs::positionY] ) ;
-      
+         
          //Incrémentation du nombre de pas effectués
          explorateur[0][Attributs::nbMouvement] ++ ; 
-      
+         
       }while(continuer) ;
       
-      //Remplir les statistiques
+      //On remplit les statistiques
       remplirStatistique( explorateur , historiqueEvenement , simulation ) ;
-      //Remettre l'explorateur dans à sa position initiale
-      relacerExplorateur( posInitialX , posInitialY , explorateur ) ;
+      //On réinitialise l'explorateur dans à sa position initiale
+      initialiserExplorateur( posInitialX , posInitialY , explorateur ) ;
 
    } //end for
 

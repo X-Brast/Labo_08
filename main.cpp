@@ -33,8 +33,12 @@ int main()
    
    // la terre n'étant pas un objet nous deveons la retirer
    int nbObjet = ListeObjet::NB_OBJET - 1;
-     
-   cout << "Ce programme permet de faire des statistique pour trouver le tresor" << endl << endl;
+   
+   cout << "=======================================================================" << endl
+   << "Chasse au tresor ! Ce programme simule un explorateur en quete de richesse !" << endl
+   << "Il affichera le nombre de pas que les explorateurs " << endl 
+   << "les plus vailliants ont fait pour atteindre le tresor !" << endl
+   << "=======================================================================" << endl << endl ;
    
    do
    {
@@ -47,11 +51,9 @@ int main()
       
       afficherMap(map);
       
-      cout << explorateur[0][0] << " - " << explorateur[0][1] << endl;
+      cout << "Coordonees initiales (x ; y) de l'explorateur : ( " << explorateur[0][0] << " ; " << explorateur[0][1] << " )" << endl;
       
       lancerSimulation( explorateur , map , historiqueEvenement , nbSimulation );
-      
-      cout << explorateur[0][0] << " - " << explorateur[0][1] << endl;
          
       afficherStatistique( historiqueEvenement , nbSimulation ) ;
       
