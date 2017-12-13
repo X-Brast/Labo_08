@@ -21,7 +21,7 @@
  -----------------------------------------------------------------------------------
 */
 
-#include "simulation.h"
+#include "constante.h"
 #include "map.h"
 #include "aleatoire.h"
 

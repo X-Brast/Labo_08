@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <cmath>
 #include <iomanip>
-#include "variable.h"
+#include "constante.h"
 
 using namespace std ; 
 

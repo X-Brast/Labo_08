@@ -23,7 +23,7 @@
 
 #include <cstdlib>
 #include <stdlib.h>
-#include "variable.h"
+#include "constante.h"
 #include "simulation.h"
 #include "statistique.h"
 #include "saisie.h"

@@ -7,7 +7,7 @@
 
  But         : Déclaration des fonctions et constantes de map.cpp 
 
- Remarque(s) : le fichier variable.h doit toujours être presentes car il y a des enums et variable important pour la map
+ Remarque(s) : le fichier constante.h doit toujours être presentes car il y a des enums et variable important pour la map
  *             La fonction caseUtiliserParUtilisateur n'est pas utilisé dans ce projet mais il est utile si on voudrait plusieurs utilisateurs dans la map
 
  Compilateur : MinGW-g++ 6.3.0
@@ -20,7 +20,7 @@
 #include "aleatoire.h"
 #include <cmath>
 #include <iostream>
-#include "variable.h"
+#include "constante.h"
 
 using namespace std;
 

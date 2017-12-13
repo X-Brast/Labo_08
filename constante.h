@@ -1,21 +1,21 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08
- Fichier     : variable.h
+ Fichier     : constante.h
  Auteur(s)   : Alexandre Marques & Maurice Lehmann
  Date        : 05.12.2017
 
  But         : accéder à des variables globals et enum
 
  Remarque(s) : il faut ajouter cet header dans chaque fichier header de ce projet
- *             Il faut touujours laisser le dernier element de chaque enum à la dernière place
+ *             Il faut toujours laisser le dernier element de chaque enum à la dernière place
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */
 
-#ifndef VARIABLE_H
-#define VARIABLE_H
+#ifndef CONSTANTE_H
+#define CONSTANTE_H
 
 // ATTENTION !!! toujours laisser NB_OBJET à la fin de l'enum !!!!
 enum ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC, NB_OBJET };
@@ -35,5 +35,5 @@ const int LARGEUR_MAP = 10;
 
 const int NB_UTILISATEUR = 0 ; 
 
-#endif /* VARIABLE_H */
+#endif /* CONSTANTE_H */
 
