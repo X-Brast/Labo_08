@@ -1,6 +1,6 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : 08
+ Laboratoire : Labo_08
  Fichier     : saisie.cpp
  Auteur(s)   : Maurice Lehmann et Alexandre Marques
  Date        : 05.12.2017

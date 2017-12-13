@@ -7,8 +7,6 @@
 
  But         : permet de créer un map avec different objet 
 
- Remarque(s) : 
-
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
 */
