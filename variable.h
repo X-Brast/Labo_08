@@ -18,9 +18,9 @@
 #define VARIABLE_H
 
 // ATTENTION !!! toujours laisser NB_OBJET à la fin de l'enum !!!!
-enum ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC, NB_OBJET};
+enum ListeObjet {TERRE, UTILISATEUR, TRESOR, LAC, NB_OBJET };
 
-enum Status    { OK , PERDU , RICHE , EPUISE , NOYE } ;
+enum Status{ OK , PERDU , RICHE , EPUISE , NOYE } ;
 
 // pos X - pos Y - status - nombre pas
 // ATTENTION !!! toujours laisser NB_ATTRIBUTS à la fin de l'enum !!!!

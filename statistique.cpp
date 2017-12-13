@@ -20,20 +20,9 @@ void afficherStatistique(const int tabStatPartie[][StatEvent::NB_STAT], int nbSi
 {
    int      nombrePasMoyen       = 0;
    double   MoyenneEtat          = 0;
-   
-   // On va afficher selon utilisateur, les statistiques détaillés de chaque chercheur
-   bool afficherStatChercheur = DemandeAutorisationFonctionnalite("Voulez-vous afficher les stats de chaque chercheur ?  ");
-   
+     
    cout << endl << "STATS:  " << endl ;
-   
-   if(afficherStatChercheur)
-   {
-      // on affiche les informations de chaque utilisateur
-      afficherTabStat(tabStatPartie, nbSimulation);
       
-      cout << endl;
-   }
-   
    // Affiche la moyenne de l'état PERDU
    MoyenneEtat = moyenneEtatUtilisateurs(tabStatPartie, nbSimulation, Status::PERDU ,nombrePasMoyen);
    cout << "Il y a eu " << MoyenneEtat << "% de chercheur qui se sont perdus en chemin." << endl;
@@ -73,6 +62,15 @@ void afficherStatistique(const int tabStatPartie[][StatEvent::NB_STAT], int nbSi
       cout << "Malheureusement, personne n'a trouve le tresor sur cette ile." << endl;
       cout << "Ils auront plus de chance la prochaine fois" << endl;
    }
+   
+   // On va afficher selon utilisateur, les statistiques détaillés de chaque chercheur
+   if(DemandeAutorisationFonctionnalite("Voulez-vous afficher tout les details de la simulation ?  "))
+   {
+      // on affiche les informations de chaque utilisateur
+      afficherTabStat(tabStatPartie, nbSimulation);
+      cout << endl;
+   }
+   
 }
 
 double moyenneEtatUtilisateurs(const int tabStatPartie[][StatEvent::NB_STAT], int nbElement, int etat, int& nombrePasMoyen)
